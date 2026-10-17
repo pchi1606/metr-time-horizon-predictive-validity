@@ -3,7 +3,7 @@
 If you use this reproduction package, please cite:
 
 > Rangaraju, P. (2026). *Does the AI Time Horizon Predict Anything? A
-> Preregistered Predictive-Validity Shootout.* Manuscript submitted to TMLR.
+> Preregistered Predictive-Validity Shootout.* Manuscript intended for submission to TMLR.
 
 And the data source:
 
