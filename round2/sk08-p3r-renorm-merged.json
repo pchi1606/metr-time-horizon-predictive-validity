@@ -1,0 +1,44 @@
+{
+ "arm": "SK-08 P3r renormalised (within-fold per-AI renormalised weights, locked partition)",
+ "folds": [
+  {
+   "fold": 0,
+   "selected_lambda": 0.001,
+   "diff": -0.0024,
+   "implementation": "deposited (sk08p3r-run.log)"
+  },
+  {
+   "fold": 1,
+   "selected_lambda": 0.0003,
+   "diff": -0.0495,
+   "implementation": "deposited (sk08p3r-run.log)"
+  },
+  {
+   "fold": 2,
+   "selected_lambda": 0.0003,
+   "diff": -0.0154,
+   "implementation": "fast_ridge (validated)"
+  },
+  {
+   "fold": 3,
+   "selected_lambda": 0.0003,
+   "diff": -0.0197,
+   "implementation": "fast_ridge (validated)"
+  },
+  {
+   "fold": 4,
+   "selected_lambda": 0.0003,
+   "diff": 0.0148,
+   "implementation": "fast_ridge (validated)"
+  }
+ ],
+ "locked_diffs": [
+  0.0081,
+  -0.0514,
+  -0.0164,
+  -0.0188,
+  0.0185
+ ],
+ "note": "Fold 0 changes sign vs locked (+0.0081 -> -0.0024); folds 1-4 keep their locked signs. Mean renorm -0.0144 vs locked mean -0.0120. Per the referee's recorded R2-L condition, Section 5's P3r range sentence carries the renormalised range.",
+ "mean_diff": -0.014439999999999998
+}

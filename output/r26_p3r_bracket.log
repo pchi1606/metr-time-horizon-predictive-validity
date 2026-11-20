@@ -1,0 +1,8 @@
+fold 0: lambda*=0.0003 (oracle 0.0001) P3r ll=0.3276 P1-P3r=+0.0081 tight drift=+3.47e-06
+fold 1: lambda*=0.0003 (oracle 3e-06) P3r ll=0.4267 P1-P3r=-0.0514 tight drift=+2.47e-06
+fold 2: lambda*=0.0003 (oracle 0.0001) P3r ll=0.4401 P1-P3r=-0.0164 tight drift=+2.06e-06
+fold 3: lambda*=0.0003 (oracle 0.0003) P3r ll=0.4152 P1-P3r=-0.0188 tight drift=-3.43e-06
+fold 4: lambda*=0.0003 (oracle 0.001) P3r ll=0.4200 P1-P3r=+0.0185 tight drift=+1.79e-06
+P1-P3r logloss (r26 bracket grid): -0.0120 +/- 0.0121 (rule pass: False); selected lambdas: [0.0003, 0.0003, 0.0003, 0.0003, 0.0003]
+tightened margin: -0.0120 +/- 0.0121; locked arm: -0.4182 -> -1.0410 under tightening
+saved ../output/r26_p3r_bracket.json in 1285s

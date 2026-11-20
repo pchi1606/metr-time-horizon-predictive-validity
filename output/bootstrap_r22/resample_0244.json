@@ -1,0 +1,7 @@
+{
+ "resample": 244,
+ "seed_base": 20261113,
+ "status": "failed",
+ "error": "ValueError: `y` must contain only finite values.",
+ "wall_s": 166.5505964756012
+}

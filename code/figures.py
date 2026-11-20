@@ -45,15 +45,19 @@ for k, m in enumerate(["P1", "P0", "P2", "P3"]):
     vals = [f[m]["logloss"] if m != "P0" else p0["P0_logloss_per_fold"][fi]
             for fi, f in enumerate(folds)]
     ax.bar(x + (k - 1.5) * wdt, vals, wdt, label=m)
-ax.set_xticks(x); ax.set_xticklabels([f"fold {i}" for i in range(5)])
-ax.set_ylabel("held-out weighted log-loss")
-ax.set_title("Cross-validated log-loss per fold (lower is better)")
-ax.legend(fontsize=8); ax.grid(True, alpha=0.3, axis="y")
-fig.tight_layout(); fig.savefig("../output/fig3_fold_logloss.png"); plt.close(fig)
+ax.set_xticks(x); ax.set_xticklabels([f"fold {i}" for i in range(5)], fontsize=11)
+ax.tick_params(labelsize=11)
+ax.set_ylabel("held-out weighted log-loss", fontsize=11)
+ax.set_title("Cross-validated log-loss per fold (lower is better)", fontsize=11)
+ax.legend(fontsize=10, loc="lower center", bbox_to_anchor=(0.5, 1.16),
+          ncol=4, frameon=False)
+ax.grid(True, alpha=0.3, axis="y")
+fig.tight_layout(); fig.savefig("../output/fig3_fold_logloss.png",
+                                bbox_inches="tight"); plt.close(fig)
 
-# Fig 4: horizons (mine, fold mean +/- sd) vs METR published
+# Fig 4: horizons (mine, fold median + IQR) vs METR published
 mine = de["horizons_mine_min"]
-hsd = st["horizon_fold_mean_sd_min"]
+hfold = st["horizon_folds_min"]
 pub_map = {
     "Claude 3 Opus (Inspect)": "claude_3_opus_inspect",
     "Claude 3.5 Sonnet (Old) (Inspect)": "claude_3_5_sonnet_20240620_inspect",
@@ -65,6 +69,7 @@ pub_map = {
     "Claude Opus 4.6 (Inspect)": "claude_opus_4_6_inspect",
     "GPT-4 0314": "gpt_4", "GPT-4 1106 (Inspect)": "gpt_4_1106_inspect",
     "GPT-4 Turbo (Inspect)": "gpt_4_turbo_inspect", "GPT-4o (Inspect)": "gpt_4o_inspect",
+    "GPT-5 (Inspect)": "gpt_5_2025_08_07_inspect",
     "GPT-5.1-Codex-Max (Inspect)": "gpt_5_1_codex_max_inspect",
     "GPT-5.2": "gpt_5_2", "GPT-5.3-Codex": "gpt_5_3_codex",
     "Gemini 3 Pro": "gemini_3_pro", "o1 (Inspect)": "o1_inspect",
@@ -72,17 +77,20 @@ pub_map = {
 }
 import yaml
 pub = yaml.safe_load(open("../data/benchmark_results_1_1.yaml"))["results"]
-names, mh, sd, ph = [], [], [], []
+names, mh, lo, hi, ph = [], [], [], [], []
 for alias, pid in pub_map.items():
     names.append(alias.replace(" (Inspect)", ""))
-    mh.append(mine[alias]); sd.append(hsd[alias]["sd"])
+    fv = np.array(hfold[alias])
+    med = float(np.median(fv))
+    q1, q3 = np.percentile(fv, [25, 75])
+    mh.append(med); lo.append(med - q1); hi.append(q3 - med)
     ph.append(float(pub[pid]["metrics"]["p50_horizon_length"]["estimate"]))
 order = np.argsort(mh)
 names = [names[i] for i in order]; mh = np.array(mh)[order]
-sd = np.array(sd)[order]; ph = np.array(ph)[order]
+lo = np.array(lo)[order]; hi = np.array(hi)[order]; ph = np.array(ph)[order]
 y = np.arange(len(names))
 fig, ax = plt.subplots(figsize=(6.4, 5.2))
-ax.errorbar(mh, y, xerr=sd, fmt="o", ms=3, capsize=2, label="this work (spline, fold mean +/- sd)")
+ax.errorbar(mh, y, xerr=[lo, hi], fmt="o", ms=3, capsize=2, label="this work (spline, fold median, IQR)")
 ax.scatter(ph, y, marker="s", s=16, label="METR published (logistic)")
 ax.set_xscale("log"); ax.set_yticks(y); ax.set_yticklabels(names, fontsize=7)
 ax.set_xlabel("50% time horizon (minutes, log scale)")

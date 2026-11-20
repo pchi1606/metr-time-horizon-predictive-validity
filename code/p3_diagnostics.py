@@ -102,7 +102,7 @@ def main():
               f"extreme={rec['frac_extreme']:.2f} ll={rec['logloss']:.3f} | "
               f"P3r: beta={rec['P3r_beta']:.2f} extreme={rec['P3r_frac_extreme']:.2f} ll={rec['P3r_logloss']:.3f}",
               flush=True)
-    with open("output/p3_diagnostics.json", "w") as f:
+    with open("../output/p3_diagnostics.json", "w") as f:
         json.dump(out, f, indent=2)
     print("saved output/p3_diagnostics.json")
 

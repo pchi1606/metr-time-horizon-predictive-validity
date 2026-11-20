@@ -1,0 +1,43 @@
+{
+  "n_files": 300,
+  "n_ok": 294,
+  "n_failed": 6,
+  "failed_resamples": [
+    9,
+    193,
+    244,
+    283,
+    292,
+    293
+  ],
+  "locked_values_from_cv_scores": {
+    "H1": -0.23822635997061153,
+    "H2": -0.41815911947175105
+  },
+  "H1_p1_minus_p2": {
+    "bootstrap_se": 0.04357726777603437,
+    "mean": -0.24717095043293172,
+    "median": -0.24862468193114745,
+    "percentile_ci95": [
+      -0.3272125304790336,
+      -0.15460272855217883
+    ],
+    "frac_resamples_mean_below_0": 1.0,
+    "locked_rule_pass_rate": 0.9931972789115646,
+    "locked_value": -0.23822635997061153,
+    "locked_minus_bootstrap_median": 0.010398321960535917
+  },
+  "H2_p1_minus_p3": {
+    "bootstrap_se": 0.09294867704564233,
+    "mean": -0.19719400687289274,
+    "median": -0.18139262255010488,
+    "percentile_ci95": [
+      -0.4136438533806555,
+      -0.05982781857128026
+    ],
+    "frac_resamples_mean_below_0": 1.0,
+    "locked_rule_pass_rate": 0.8197278911564626,
+    "locked_value": -0.41815911947175105,
+    "locked_minus_bootstrap_median": -0.23676649692164617
+  }
+}

@@ -1,0 +1,5 @@
+{
+ "truth": "T1",
+ "rep": 28,
+ "failed": "`y` must contain only finite values."
+}

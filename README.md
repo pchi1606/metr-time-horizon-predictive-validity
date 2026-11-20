@@ -1,7 +1,18 @@
-# Reproduction package: Does the AI Time Horizon Predict Anything?
+# Reproduction package: Duration Conditioning Predicts Held-Out-Family Success for Already-Observed Models on METR Time Horizon 1.1 — A Shootout Against Mean Accuracy
 
 One-command reproduction of the preregistered predictive-validity shootout for
-the METR AI time-horizon metric (TMLR submission).
+the METR AI time-horizon metric (SN Computer Science submission).
+
+Package version: v1.0.0, archived 2026-11-20 with the SN Computer Science
+submission manuscript build 82c2f8fe (2026-11-20). The bundled METR run
+data is not redistributed in this archive — see data/DATA-README.md. The verifier (verify.py) covers the
+locked pipeline and every revision add-on's printed numbers, including the
+regenerated alternative-partition values and the round-11 stage-1 penalty
+sensitivity (Appendix D); the superseded historical values
+discussed in the manuscript's Limitations are not retained and are not
+covered. A companion verifier (verify_printed.py) checks the numbers as
+printed in the compiled PDF, and code/p3_convergence.py demonstrates the
+P3 fits' convergence to a printed tolerance (Appendix D).
 
 ## Quick start
 
@@ -29,6 +40,14 @@ modest CPU (2 cores). Requires Python 3 with `numpy`, `scipy`, `pandas`,
 4. `code/figures.py` — regenerates all paper figures from the outputs.
 5. `verify.py` — recomputes every headline number from the outputs and fails
    loudly on any mismatch beyond tolerance.
+6. `verify_printed.py` — extracts the compiled PDF's text layer and checks
+   the printed values themselves (transcription errors on the page).
+   `code/p3_convergence.py` — per-fold P3 convergence demonstration
+   (analytic gradient at the locked solutions; tightened warm-started
+   refits), saving `output/p3_convergence.json`. It reads
+   `output/cv_scores.json` (produced by step 1) as its anchor and
+   refits stage 1 per fold; expect a few minutes on top of the
+   pipeline's ~25 minutes.
 
 ## Data
 

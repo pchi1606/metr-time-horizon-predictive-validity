@@ -1,0 +1,57 @@
+{
+ "0": {
+  "n_runs": 17319,
+  "n_tasks": 174,
+  "n_ais": 20,
+  "task_all_fail": 13,
+  "task_all_succ": 30,
+  "ai_all_fail": 0,
+  "ai_all_succ": 0,
+  "components": 1,
+  "nodes": 194
+ },
+ "1": {
+  "n_runs": 19842,
+  "n_tasks": 192,
+  "n_ais": 20,
+  "task_all_fail": 15,
+  "task_all_succ": 59,
+  "ai_all_fail": 0,
+  "ai_all_succ": 0,
+  "components": 1,
+  "nodes": 212
+ },
+ "2": {
+  "n_runs": 18798,
+  "n_tasks": 181,
+  "n_ais": 20,
+  "task_all_fail": 14,
+  "task_all_succ": 59,
+  "ai_all_fail": 0,
+  "ai_all_succ": 0,
+  "components": 1,
+  "nodes": 201
+ },
+ "3": {
+  "n_runs": 17646,
+  "n_tasks": 176,
+  "n_ais": 20,
+  "task_all_fail": 11,
+  "task_all_succ": 37,
+  "ai_all_fail": 0,
+  "ai_all_succ": 0,
+  "components": 1,
+  "nodes": 196
+ },
+ "4": {
+  "n_runs": 19335,
+  "n_tasks": 189,
+  "n_ais": 20,
+  "task_all_fail": 15,
+  "task_all_succ": 51,
+  "ai_all_fail": 0,
+  "ai_all_succ": 0,
+  "components": 1,
+  "nodes": 209
+ }
+}

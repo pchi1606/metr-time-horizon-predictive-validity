@@ -134,6 +134,9 @@ def main():
         ai_names[jj]: {"mean": float(horizons_folds[:, jj].mean()),
                        "sd": float(horizons_folds[:, jj].std(ddof=1))}
         for jj in range(n_ai)}
+    out["horizon_folds_min"] = {
+        ai_names[jj]: [float(v) for v in horizons_folds[:, jj]]
+        for jj in range(n_ai)}
     with open("../output/strengthen.json", "w") as f:
         json.dump(out, f, indent=2)
     print("ECE:", {m: round(cal[m]["ece"], 4) for m in cal})
